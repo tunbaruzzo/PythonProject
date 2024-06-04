@@ -15,9 +15,14 @@ class Profesionales(models.Model):
     nombre= models.CharField(max_length=40)
     apellido= models.CharField(max_length=40)
     celular= models.IntegerField()
+    profesion= models.CharField(max_length=40, default= 'Indefinida')
 
 class Miembros(models.Model):
     nombre= models.CharField(max_length=40)
     apellido= models.CharField(max_length=40)
     celular= models.IntegerField()
 
+class Consultas(models.Model):
+    nombre= models.CharField(max_length=40)
+    apellido= models.CharField(max_length=40)
+    email= models.EmailField()
