@@ -9,19 +9,19 @@ from .models import Consultas
 # Create your views here.
 
 def inicio(req):
-        return HttpResponse("Pantalla Inicio")
+        return render(req,"inicio.html", {})
 
 def programa(req):
-        return HttpResponse("Pantalla Programa")
+        return render(req,"programas.html", {})
 
 def instructores(req):
-        return HttpResponse("Pantalla Instructores")
+       return render(req,"instructores.html", {})
 
 def profesionales(req):
-        return HttpResponse("Pantalla Profesionales")
+        return render(req,"profesionales.html", {})
 
 def miembros(req):
-        return HttpResponse("Pantalla Miembros")
+        return render(req,"miembros.html", {})
 
 def consultas(req):
-        return HttpResponse("Pantalla Consultas")
+       return render(req,"consultas.html", {})
