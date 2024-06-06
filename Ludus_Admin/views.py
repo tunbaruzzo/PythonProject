@@ -12,7 +12,7 @@ def inicio(req):
         return render(req,"inicio.html", {})
 
 def programa(req):
-        return render(req,"programas.html", {})
+        return render(req,"programa.html", {})
 
 def instructores(req):
        return render(req,"instructores.html", {})
