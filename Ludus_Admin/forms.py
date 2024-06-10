@@ -1,5 +1,7 @@
 from django import forms
 
-class CursoMiembros(forms.Form)
-    
-    nombre = for
+class formulario_miembro(forms.Form):
+        
+    nombre = forms.CharField()
+    apellido = forms.CharField()
+    celular= forms.IntegerField()
