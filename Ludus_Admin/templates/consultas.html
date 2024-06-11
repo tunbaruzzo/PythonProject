@@ -1,9 +1,8 @@
 {% extends 'padre.html' %}
 
 {% block contenidoquecambia %}
- <!-- contact section -->
-
- <section class="contact_section ">
+ 
+<section class="contact_section ">
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-6 px-0">
@@ -15,25 +14,25 @@
         <div class="form_container pr-0 pr-lg-5 mr-0 mr-lg-2">
           <div class="heading_container">
             <h2>
-              Envianos tu consulta
+              DEJANOS TU CONSULTA
             </h2>
           </div>
-          <form action="{% url 'consultas' %}" method="post"> {% csrf_token %}
+          <form action="">
             <div>
               <input type="text" placeholder="Nombre" />
-            </div>
-            <div>
-              <input type="text" placeholder="Apellido" />
             </div>
             <div>
               <input type="email" placeholder="Email" />
             </div>
             <div>
+              <input type="text" placeholder="Celular" />
+            </div>
+            <div>
               <input type="text" class="message-box" placeholder="Mensaje" />
             </div>
             <div class="d-flex ">
-              <button type="submit">
-                Enviar
+              <button>
+                ENVIAR
               </button>
             </div>
           </form>
@@ -43,7 +42,6 @@
   </div>
 </section>
 
-<!-- end contact section -->
 
 
 {% endblock contenidoquecambia %}

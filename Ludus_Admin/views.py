@@ -1,11 +1,13 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Programa  
 from .models import Instructores
 from .models import Profesionales
 from .models import Miembros 
 from .models import Consultas
 from .forms import formulario_miembro
+from .forms import formularioinstructor
+from .forms import formularioprograma
 
 # Create your views here.
 
@@ -27,17 +29,73 @@ def miembros(req):
 def consultas(req):
        return render(req,"consultas.html", {})
 
-def formulariomiembro(req):
+def form_miembro(req):
        
-       print('method: ', req.method)
-       print('post: ', req.post)
+       
+       if req.method == 'POST':
 
-       if req.method == 'post':
-              nuevo_miembro= Miembros(nombre= req.post['nombre'], apellido= req.post['apellido'], celular= req.post['celular'])
-              nuevo_miembro.save()
+              MiFormulario_Miembro= formulario_miembro(req.POST)
 
-              return render(req,"inicio.html", {})
+              if MiFormulario_Miembro.is_valid():
+
+                     data= MiFormulario_Miembro.cleaned_data
+
+                     nuevo_miembro= Miembros(nombre= data['nombre'], apellido= data['apellido'], celular= data['celular'])
+                     nuevo_miembro.save()
+
+                     return render(req,"inicio.html", {"message": "¡BIENVENID@ SOS MIEMBRO DE LUDUS!"})
+       
+              else:
+                     return render(req,"inicio.html", {"message": "UPS! Datos inválidos, vuelve a intentar."})
+
        else:
-              MiFormularioMiembro = formulario_miembro()
+              MiFormulario_Miembro = formulario_miembro()
                      
-       return render(req,"formulario_miembro.html", {"MiFormularioMiembro": MiFormularioMiembro})
+       return render(req,"formulario_miembro.html", {"MiFormulario_Miembro": MiFormulario_Miembro})
+
+def form_instructor(req):
+       
+       if req.method == 'POST':
+
+              MiFormulario_Instructor= formularioinstructor(req.POST)
+
+              if MiFormulario_Instructor.is_valid():
+
+                     data= MiFormulario_Instructor.cleaned_data
+
+                     nuevo_miembro= Instructores(nombre= data['nombre'], apellido= data['apellido'], celular= data['celular'])
+                     nuevo_miembro.save()
+
+                     return render(req,"inicio.html", {"message": "¡Nos pondremos en contacto sobre tu postulación!. El plazo es de 48hs hábiles."})
+       
+              else:
+                     return render(req,"inicio.html", {"message": "UPS! Datos inválidos, vuelve a intentar."})
+
+       else:
+              MiFormulario_Instructor = formularioinstructor()
+                     
+       return render(req,"formularioinstructor.html", {"MiFormulario_Instructor": MiFormulario_Instructor})
+
+
+def form_programa(req):
+       
+        if req.method == 'POST':
+
+              MiFormulario_Programa= formularioprograma(req.POST)
+
+              if MiFormulario_Programa.is_valid():
+
+                     data= MiFormulario_Programa.cleaned_data
+
+                     nuevo_programa= Programa(nombre= data['nombre'], duracion= data['duracion'], capacidad= data['capacidad'])
+                     nuevo_programa.save()
+
+                     return render(req,"inicio.html", {"message": "¡Nos pondremos en contacto sobre tu propuesta!. El plazo es de 48hs hábiles."})
+       
+              else:
+                     return render(req,"inicio.html", {"message": "UPS! Datos inválidos, vuelve a intentar."})
+
+        else:
+              MiFormulario_Programa = formularioprograma()
+                     
+        return render(req,"formularioprograma.html", {"MiFormulario_Programa": MiFormulario_Programa})

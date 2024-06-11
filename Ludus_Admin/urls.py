@@ -7,7 +7,9 @@ from Ludus_Admin.views import (
     profesionales, 
     miembros, 
     consultas,
-    formulario_miembro
+    form_miembro,
+    form_instructor,
+    form_programa
 )
 
 urlpatterns =[
@@ -17,5 +19,7 @@ urlpatterns =[
     path('profesionales/', profesionales, name= 'profesionales'),
     path('miembros/',miembros, name= 'miembros'),
     path('consultas/', consultas, name= 'consultas'),
-    path('formulario_miembro/', formulariomiembro, name= 'formulariomiembro')
+    path('formulario_miembro/', form_miembro, name= 'formulario_miembro'),
+    path('formularioinstructor/', form_instructor, name= 'formularioinstructor'),
+    path('formularioprograma/', form_programa, name= 'formularioprograma')
 ]
