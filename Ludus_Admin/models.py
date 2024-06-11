@@ -2,12 +2,21 @@ from django.db import models
 
 # Create your models here.
 class Programa(models.Model):
+    CATEGORIA_OPCIONES =[
+        ('Cardio', 'Cardio'),
+        ('Fuerza', 'Fuerza'),
+        ('Movimiento', 'Movimiento'),
+        ('Flexibilidad', 'Flexibilidad'),
+        ]
+
+
     nombre= models.CharField(max_length=40)
+    categoria = models.CharField (max_length=40, choices=CATEGORIA_OPCIONES)
     duracion= models.IntegerField()
     capacidad= models.IntegerField()
 
     def __str__(self) -> str:
-        return f'{self.nombre}'
+        return f'{self.nombre, self.categoria}'
 
 class Instructores(models.Model):
     nombre= models.CharField(max_length=40)

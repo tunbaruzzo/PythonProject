@@ -12,7 +12,7 @@ from .forms import formularioprograma
 # Create your views here.
 
 def inicio(req):
-        return render(req,"inicio.html", {})
+        return render(req,"inicio.html", {"message": "¿TE ANIMAS A SUPERAR TUS LÍMITES?"})
 
 def programa(req):
         return render(req,"programa.html", {})
@@ -99,3 +99,17 @@ def form_programa(req):
               MiFormulario_Programa = formularioprograma()
                      
         return render(req,"formularioprograma.html", {"MiFormulario_Programa": MiFormulario_Programa})
+
+def busqueda_programa(req):
+
+       return render(req,"busqueda_programa.html", {})
+
+def buscar(req):
+       if req.GET["categoria"]:
+              categoria = req.GET["categoria"]
+              nombre = Programa.objects.filter(categoria__icontains= categoria)
+
+              return render(req, "resultadobusquedaprograma.html", {"programa": nombre, "categoria":categoria})
+       
+       else:
+              return render(req, "inicio.html", {"message": "UPS! Hubo un error, volvé a intentar por favor."})
