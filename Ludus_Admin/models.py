@@ -11,7 +11,7 @@ class Programa(models.Model):
 
 
     nombre= models.CharField(max_length=40)
-    categoria = models.CharField (max_length=40, choices=CATEGORIA_OPCIONES)
+    categoria = models.CharField (max_length=40, choices=CATEGORIA_OPCIONES, default='A definir manualmente.')
     duracion= models.IntegerField()
     capacidad= models.IntegerField()
 
@@ -47,4 +47,4 @@ class Consultas(models.Model):
     nombre= models.CharField(max_length=40)
     apellido= models.CharField(max_length=40)
     email= models.EmailField()
-    mensaje= models.CharField(max_length=200)
+    mensaje= models.CharField(max_length=200, default='Sin Datos.')
