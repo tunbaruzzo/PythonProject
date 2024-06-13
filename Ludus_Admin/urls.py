@@ -25,6 +25,6 @@ urlpatterns =[
     path('formularioinstructor/', form_instructor, name= 'formularioinstructor'),
     path('formularioprograma/', form_programa, name= 'formularioprograma'),
     path('busqueda_programa/', busqueda_programa, name= 'busquedaprograma'),
-    path('buscar/', buscar, name= 'buscarprograma')
+    path('buscar/', buscar, name= 'buscar')
 
 ]

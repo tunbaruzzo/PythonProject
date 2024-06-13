@@ -16,7 +16,7 @@ class Programa(models.Model):
     capacidad= models.IntegerField()
 
     def __str__(self) -> str:
-        return f'{self.nombre, self.categoria}'
+        return f'{self.nombre}, {self.categoria}'
 
 class Instructores(models.Model):
     nombre= models.CharField(max_length=40)

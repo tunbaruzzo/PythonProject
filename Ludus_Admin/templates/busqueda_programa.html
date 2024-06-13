@@ -1,7 +1,7 @@
 {% extends 'padre.html' %}
 
 {% block contenidoquecambia %}
-
+{% load static %}
 
 
  <section class="contact_section ">
@@ -19,9 +19,9 @@
               CONOCE NUESTROS PROGRAMAS
             </h2>
           </div>
-          <form action="{% url 'buscarprograma' %}" method="get"> 
+          <form action="{% url 'buscar' %}" method="get"> 
             <div>
-                <input type="text" placeholder="Categoria" />
+                <input type="text" name="nombre" />
             </div>
             <div class="d-flex ">
               <button type="submit">

@@ -105,11 +105,11 @@ def busqueda_programa(req):
        return render(req,"busqueda_programa.html", {})
 
 def buscar(req):
-       if req.GET["categoria"]:
-              categoria = req.GET["categoria"]
-              nombre = Programa.objects.filter(categoria__icontains= categoria)
+       if req.GET["nombre"]:
+              nombre = req.GET["nombre"]
+              nombre = Programa.objects.filter(nombre__icontains= nombre)
 
-              return render(req, "resultadobusquedaprograma.html", {"programa": nombre, "categoria":categoria})
+              return render(req, "resultadobusquedaprograma.html", {"programa": nombre})
        
        else:
               return render(req, "inicio.html", {"message": "UPS! Hubo un error, volvé a intentar por favor."})
